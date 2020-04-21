@@ -3,8 +3,8 @@
 buildscript {
     
     repositories {
-        google()
-        jcenter()
+        //本地私服
+        maven { url 'http://localhost:8081/artifactory/android_group/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
@@ -17,6 +17,8 @@ buildscript {
 
 allprojects {
     repositories {
+        //本地私服
+//        maven { url 'http://localhost:8081/artifactory/android_group/' }
         google()
         jcenter()
     }
@@ -24,4 +26,13 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+//定义编译常量
+ext {
+    compileSdkVersion = 28 //Android9.0建议compileSdkVersion=targetSdkVersion并且是最新的sdk
+    minSdkVersion = 21 //Android5.0
+    targetSdkVersion = 28
+    versionCode = 1
+    versionName = "1.0.0"
 }
