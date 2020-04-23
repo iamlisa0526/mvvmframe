@@ -1,4 +1,4 @@
-package com.lisa.base.view;
+package com.lisa.base.activity;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -34,8 +34,8 @@ public abstract class MvvmBaseActivity<V extends ViewDataBinding, VM extends Bas
         viewModle = getViewModle();
         if (getBindingVariable() > 0) {
             viewDataBinding.setVariable(getBindingVariable(), viewModle);
+            viewDataBinding.executePendingBindings();
         }
-        viewDataBinding.executePendingBindings();
     }
 
     @LayoutRes
