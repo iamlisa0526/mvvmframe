@@ -1,7 +1,7 @@
 package com.lisa.base.view;
 
 /**
- * @Description: 提供给不需要databinding的地方用
+ * @Description: 提供给不需要databinding的地方用（类似MVP）
  * @Author: lisa
  * @CreateDate: 2020/4/30 13:28
  */
