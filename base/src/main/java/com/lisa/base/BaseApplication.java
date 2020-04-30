@@ -2,6 +2,10 @@ package com.lisa.base;
 
 import android.app.Application;
 
+import com.kingja.loadsir.core.LoadSir;
+import com.lisa.base.loadsir.EmptyCallback;
+import com.lisa.base.loadsir.LoadingCallback;
+
 /**
  * @Description: Application基类
  * @Author: lisa
@@ -26,5 +30,14 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+
+        LoadSir.beginBuilder()//添加各种状态页
+                .addCallback(new LoadingCallback())
+                .addCallback(new EmptyCallback())
+                .addCallback(new EmptyCallback())
+                .setDefaultCallback(LoadingCallback.class)//设置默认状态页
+                .commit();
+
+
     }
 }

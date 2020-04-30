@@ -12,17 +12,32 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true //是否开启代码混淆功能
+//            shrinkResources true//开启代码混淆时，我们一般也加上shrinkResources true（打开资源压缩）。开启资源压缩后，所有未被使用的资源默认被移除。
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //白名单也就是proguard-rules.pro中我们自定义哪些不添加混淆。
         }
     }
 
-    dataBinding{
+    //开启databinding
+    dataBinding {
         enabled true
     }
 
+    //java8支持Lambda表达式
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    api 'com.android.support:appcompat-v7:28.0.0'
+
+    //优雅地处理加载中，重试，无数据等
+    api 'com.kingja.loadsir:loadsir:1.3.8'
+
+    //动画（2.8.0及以上版本需要迁移到androidx）
+    api 'com.airbnb.android:lottie:2.7.0'
+
 }
