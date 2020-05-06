@@ -14,14 +14,14 @@ import com.kingja.loadsir.core.LoadSir;
 import com.lisa.base.loadsir.EmptyCallback;
 import com.lisa.base.loadsir.ErrorCallback;
 import com.lisa.base.loadsir.LoadingCallback;
-import com.lisa.base.viewmodle.BaseViewModle;
+import com.lisa.base.viewmodel.BaseViewModel;
 
 /**
  * @Description: MVVM Activity基类
  * @Author: lisa
  * @CreateDate: 2020/4/15 13:03
  */
-public abstract class MvvmBaseActivity<V extends ViewDataBinding, VM extends BaseViewModle> extends AppCompatActivity implements IBaseView {
+public abstract class MvvmBaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends AppCompatActivity implements IBaseView {
     protected V viewDataBinding;
     protected VM viewModle;
     private LoadService loadService;

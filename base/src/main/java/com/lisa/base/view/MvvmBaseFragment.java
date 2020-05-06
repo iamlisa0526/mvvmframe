@@ -20,14 +20,14 @@ import com.lisa.base.loadsir.EmptyCallback;
 import com.lisa.base.loadsir.ErrorCallback;
 import com.lisa.base.loadsir.LoadingCallback;
 import com.lisa.base.utils.ToastUtil;
-import com.lisa.base.viewmodle.BaseViewModle;
+import com.lisa.base.viewmodel.BaseViewModel;
 
 /**
  * @Description: MVVM fragment基类
  * @Author: lisa
  * @CreateDate: 2020/4/23 13:59
  */
-public abstract class MvvmBaseFragment<V extends ViewDataBinding, VM extends BaseViewModle> extends Fragment implements IBasePagingView {
+public abstract class MvvmBaseFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends Fragment implements IBasePagingView {
     protected V viewDataBinding;
     protected VM viewModle;
     protected String fragmentTag = "";

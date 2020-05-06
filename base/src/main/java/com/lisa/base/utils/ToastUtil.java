@@ -10,17 +10,17 @@ import android.widget.Toast;
  * @CreateDate: 2020/4/30 15:01
  */
 public class ToastUtil {
-    private static Toast toast;
+    private static Toast mToast;
 
     public static void showToast(Context context, String msg) {
         try {
             if (context != null && !TextUtils.isEmpty(msg)) {
-                if (toast != null) {
-                    toast.cancel();
+                if (mToast != null) {
+                    mToast.cancel();
                 }
-                toast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
-                toast.setText(msg);
-                toast.show();
+                mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+                mToast.setText(msg);
+                mToast.show();
             }
 
         } catch (Exception e) {

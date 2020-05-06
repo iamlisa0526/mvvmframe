@@ -43,4 +43,7 @@ dependencies {
     //gson
     api 'com.google.code.gson:gson:2.8.6'
 
+    //retrofit2网络请求
+    api 'com.zhouyou:rxeasyhttp:2.1.5'
+
 }
