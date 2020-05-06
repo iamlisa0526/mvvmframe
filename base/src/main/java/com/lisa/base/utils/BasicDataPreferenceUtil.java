@@ -9,17 +9,17 @@ import com.lisa.base.preferences.BasePreferences;
  */
 public class BasicDataPreferenceUtil extends BasePreferences {
     private static final String BASIC_DATA_PREFERENCE_FILE_NAME = "network_api_module_basic_data_preference";
-    private static BasicDataPreferenceUtil instance;
+    private static BasicDataPreferenceUtil mInstance;
 
     public static BasicDataPreferenceUtil getInstance() {
-        if (instance == null) {
+        if (mInstance == null) {
             synchronized (BasicDataPreferenceUtil.class) {
-                if (instance == null) {
-                    instance = new BasicDataPreferenceUtil();
+                if (mInstance == null) {
+                    mInstance = new BasicDataPreferenceUtil();
                 }
             }
         }
-        return instance;
+        return mInstance;
     }
 
     @Override

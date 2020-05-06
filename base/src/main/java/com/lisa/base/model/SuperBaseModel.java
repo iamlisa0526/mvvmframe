@@ -28,16 +28,16 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class SuperBaseModel<T> {
     protected Handler uiHandler = new Handler(Looper.getMainLooper());
-    private CompositeDisposable compositeDisposable;
-    protected ReferenceQueue<IBaseModelListener> referenceQueue;
-    protected ConcurrentLinkedQueue<WeakReference<IBaseModelListener>> weakListenerList;
-    private BaseCacheData<T> data;
+    private CompositeDisposable mCompositeDisposable;
+    protected ReferenceQueue<IBaseModelListener> mReferenceQueue;
+    protected ConcurrentLinkedQueue<WeakReference<IBaseModelListener>> mWeakListenerList;
+    private BaseCacheData<T> mData;
 
     public SuperBaseModel() {
-        referenceQueue = new ReferenceQueue<>();
-        weakListenerList = new ConcurrentLinkedQueue<>();
+        mReferenceQueue = new ReferenceQueue<>();
+        mWeakListenerList = new ConcurrentLinkedQueue<>();
         if (getCachedPreferenceKey() != null) {
-            data = new BaseCacheData<>();
+            mData = new BaseCacheData<>();
         }
     }
 
@@ -53,18 +53,18 @@ public abstract class SuperBaseModel<T> {
         synchronized (this) {
             //每次注册的时候清理已经被系统回收的对象
             Reference<? extends IBaseModelListener> releaseListener = null;
-            while ((releaseListener = referenceQueue.poll()) != null) {
-                weakListenerList.remove(releaseListener);
+            while ((releaseListener = mReferenceQueue.poll()) != null) {
+                mWeakListenerList.remove(releaseListener);
             }
 
-            for (WeakReference<IBaseModelListener> weakListener : weakListenerList) {
+            for (WeakReference<IBaseModelListener> weakListener : mWeakListenerList) {
                 IBaseModelListener listenerItem = weakListener.get();
                 if (listenerItem == listener)
                     return;
             }
 
-            WeakReference<IBaseModelListener> weakListener = new WeakReference<>(listener, referenceQueue);
-            weakListenerList.add(weakListener);
+            WeakReference<IBaseModelListener> weakListener = new WeakReference<>(listener, mReferenceQueue);
+            mWeakListenerList.add(weakListener);
         }
 
     }
@@ -78,10 +78,10 @@ public abstract class SuperBaseModel<T> {
 
         if (listener == null) return;
         synchronized (this) {
-            for (WeakReference<IBaseModelListener> weakListener : weakListenerList) {
+            for (WeakReference<IBaseModelListener> weakListener : mWeakListenerList) {
                 IBaseModelListener listenerItem = weakListener.get();
                 if (listener == listenerItem) {
-                    weakListenerList.remove(weakListener);
+                    mWeakListenerList.remove(weakListener);
                     break;
                 }
             }
@@ -94,8 +94,8 @@ public abstract class SuperBaseModel<T> {
      * @param data
      */
     protected void saveData2Preference(T data) {
-        this.data.data = data;
-        this.data.updateTimeMills = System.currentTimeMillis();
+        this.mData.mData = data;
+        this.mData.mUpdateTimeMills = System.currentTimeMillis();
         BasicDataPreferenceUtil.getInstance().setString(getCachedPreferenceKey(), GsonUtil.toJson(data));
     }
 
@@ -158,17 +158,17 @@ public abstract class SuperBaseModel<T> {
      */
     @CallSuper
     public void cancell() {
-        if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
-            compositeDisposable.dispose();
+        if (mCompositeDisposable != null && !mCompositeDisposable.isDisposed()) {
+            mCompositeDisposable.dispose();
         }
     }
 
     public void addDisposable(Disposable d) {
         if (d == null) return;
-        if (compositeDisposable == null) {
-            compositeDisposable = new CompositeDisposable();
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
         }
-        compositeDisposable.add(d);
+        mCompositeDisposable.add(d);
     }
 
     public void getCachedDataAndLoad() {
@@ -176,7 +176,7 @@ public abstract class SuperBaseModel<T> {
             String saveDataString = BasicDataPreferenceUtil.getInstance().getString(getCachedPreferenceKey());
             if (!TextUtils.isEmpty(saveDataString)) {
                 try {
-                    T saveData = GsonUtil.fromJson(new JSONObject(saveDataString).getString("data"), getTClass());
+                    T saveData = GsonUtil.fromJson(new JSONObject(saveDataString).getString("mData"), getTClass());
                     if (saveData != null) {
                         notifyCachedData(saveData);
                         if (isNeedUpdate()) {

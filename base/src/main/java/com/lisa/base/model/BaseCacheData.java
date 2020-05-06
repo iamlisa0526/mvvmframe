@@ -8,6 +8,6 @@ import java.io.Serializable;
  * @CreateDate: 2020/5/6 10:03
  */
 class BaseCacheData<T> implements Serializable {
-    public long updateTimeMills;
-    public T data;
+    public long mUpdateTimeMills;
+    public T mData;
 }
