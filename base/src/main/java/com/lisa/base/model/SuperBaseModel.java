@@ -171,6 +171,9 @@ public abstract class SuperBaseModel<T> {
         mCompositeDisposable.add(d);
     }
 
+    /**
+     * 获取换粗数据并加载
+     */
     public void getCachedDataAndLoad() {
         if (getCachedPreferenceKey() != null) {
             String saveDataString = BasicDataPreferenceUtil.getInstance().getString(getCachedPreferenceKey());
