@@ -27,7 +27,7 @@ import io.reactivex.disposables.Disposable;
  * @CreateDate: 2020/5/6 09:29
  */
 public abstract class SuperBaseModel<T> {
-    protected Handler uiHandler = new Handler(Looper.getMainLooper());
+    protected Handler mUiHandler = new Handler(Looper.getMainLooper());
     private CompositeDisposable mCompositeDisposable;
     protected ReferenceQueue<IBaseModelListener> mReferenceQueue;
     protected ConcurrentLinkedQueue<WeakReference<IBaseModelListener>> mWeakListenerList;
