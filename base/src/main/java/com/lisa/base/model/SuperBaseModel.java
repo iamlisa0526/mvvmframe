@@ -2,6 +2,7 @@ package com.lisa.base.model;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.CallSuper;
 import android.text.TextUtils;
 
 import com.lisa.base.utils.BasicDataPreferenceUtil;
@@ -16,7 +17,6 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import androidx.annotation.CallSuper;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
