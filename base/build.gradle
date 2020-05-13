@@ -60,9 +60,6 @@ dependencies {
     //动画（2.8.0及以上版本需要迁移到androidx）
     api 'com.airbnb.android:lottie:2.7.0'
 
-    //gson
-    api 'com.google.code.gson:gson:2.8.6'
-
     //retrofit2网络请求
     api 'com.zhouyou:rxeasyhttp:2.1.5'
 
