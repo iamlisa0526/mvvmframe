@@ -17,10 +17,10 @@ android {
         }
     }
 
-//    //开启databinding
-//    dataBinding {
-//        enabled true
-//    }
+    //开启databinding
+    dataBinding {
+        enabled true
+    }
 
     //java8支持Lambda表达式
     compileOptions {

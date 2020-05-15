@@ -52,6 +52,11 @@ public abstract class BaseModel<T> extends SuperBaseModel<T> {
         }
     }
 
+    @Override
+    protected void notifyCachedData(T data) {
+        loadSuccess(data);
+    }
+
     public interface IModelListener<T> extends IBaseModelListener {
         void onLoadFinish(BaseModel model, T data);
 
