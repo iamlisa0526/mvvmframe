@@ -32,7 +32,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true //是否开启代码混淆功能
+            minifyEnabled false //是否开启代码混淆功能
 //            shrinkResources true//开启代码混淆时，我们一般也加上shrinkResources true（打开资源压缩）。开启资源压缩后，所有未被使用的资源默认被移除。
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //白名单也就是proguard-rules.pro中我们自定义哪些不添加混淆。

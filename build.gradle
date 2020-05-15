@@ -7,9 +7,10 @@ buildscript {
 //        maven { url 'http://localhost:8081/artifactory/android_group/' }
         google()
         jcenter()
+        maven { url 'http://nexus.minib2c.com/repository/maven-releases/' }//私服
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:3.2.0'
         
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -23,6 +24,7 @@ allprojects {
 //        maven { url 'http://localhost:8081/artifactory/android_group/' }
         google()
         jcenter()
+        maven { url 'http://nexus.minib2c.com/repository/maven-releases/' }//私服
     }
 }
 
