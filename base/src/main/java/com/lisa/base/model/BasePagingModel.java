@@ -9,7 +9,8 @@ import java.lang.ref.WeakReference;
  */
 public abstract class BasePagingModel<T> extends SuperBaseModel<T> {
     protected boolean isRefresh = true;
-    protected int pageNumber = 0;
+    protected int pageNo = 1;
+    protected int pageSize = 15;
 
     /**
      * 发消息给UI线程
