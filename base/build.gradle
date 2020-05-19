@@ -14,7 +14,7 @@ uploadArchives {
         // 项目名称
         pom.artifactId = "base"
         // 版本号
-        pom.version = "1.0.5"
+        pom.version = "1.0.8"
     }
 }
 //------------------------------aar包上传私服配置end--------------------------
@@ -63,7 +63,7 @@ dependencies {
     //retrofit2网络请求
     api 'com.zhouyou:rxeasyhttp:2.1.5'
 
-    //AndPermission权限(2.0.3及以上版本需要迁移到androidx)
-    api 'com.yanzhenjie:permission:2.0.2'
+    //AndPermission权限(2.0.2及以上版本需要迁移到androidx,具体查看release说明)
+    api 'com.yanzhenjie.permission:support:2.0.1'
 
 }

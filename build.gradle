@@ -7,6 +7,7 @@ buildscript {
 //        maven { url 'http://localhost:8081/artifactory/android_group/' }
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
         maven { url 'http://nexus.minib2c.com/repository/maven-releases/' }//私服
     }
     dependencies {
@@ -24,6 +25,7 @@ allprojects {
 //        maven { url 'http://localhost:8081/artifactory/android_group/' }
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
         maven { url 'http://nexus.minib2c.com/repository/maven-releases/' }//私服
     }
 }
