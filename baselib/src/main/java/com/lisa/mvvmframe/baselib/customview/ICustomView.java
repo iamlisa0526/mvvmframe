@@ -7,7 +7,7 @@ import android.support.annotation.IdRes;
  * @Author: lisa
  * @CreateDate: 2020/5/21 13:21
  */
-interface ICustomView<M extends BaseCustomViewModel> {
+public interface ICustomView<M extends BaseCustomViewModel> {
     void setData(M data);
 
     void setStyle(@IdRes int resId);

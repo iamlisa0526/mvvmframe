@@ -7,6 +7,6 @@ import java.io.Serializable;
  * @Author: lisa
  * @CreateDate: 2020/5/21 13:18
  */
-class BaseCustomViewModel implements Serializable {
+public class BaseCustomViewModel implements Serializable {
     public String jumpUrl;
 }

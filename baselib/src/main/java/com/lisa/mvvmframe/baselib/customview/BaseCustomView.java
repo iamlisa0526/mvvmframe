@@ -4,7 +4,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Build;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
@@ -101,7 +100,6 @@ public abstract class BaseCustomView<V extends ViewDataBinding, VM extends BaseC
         return viewModel;
     }
 
-    @IdRes
     protected abstract int setViewLayoutId();
 
     protected abstract void setDataToView(VM viewModel);
