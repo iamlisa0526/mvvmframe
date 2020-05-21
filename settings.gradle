@@ -1,1 +1,2 @@
-include ':app', ':base', ':network'
+include ':app'
+include ':baselib'
