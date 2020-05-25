@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
  */
 public class BaseViewModel<V, M extends SuperBaseModel> extends ViewModel implements IBaseViewModel<V> {
     private Reference<V> uiRef;
-    protected M viewModle;
+    protected M modle;
 
     @Override
     public void attachUI(V view) {
@@ -40,7 +40,7 @@ public class BaseViewModel<V, M extends SuperBaseModel> extends ViewModel implem
             uiRef.clear();
             uiRef = null;
         }
-        if (viewModle != null) {
+        if (modle != null) {
 //            viewModle.cancell();
         }
     }
