@@ -15,7 +15,7 @@ public class EditorUtil {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             GingerbreadCompatLayer.fastCommit(editor);
         } else {
-            //FIXME:there's no fast commit below GINGERBREAD
+            //there's no fast commit below GINGERBREAD
             editor.commit();
         }
     }

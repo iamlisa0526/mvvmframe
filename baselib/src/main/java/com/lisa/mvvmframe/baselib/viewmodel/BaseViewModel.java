@@ -41,7 +41,7 @@ public class BaseViewModel<V, M extends SuperBaseModel> extends ViewModel implem
             uiRef = null;
         }
         if (modle != null) {
-//            viewModle.cancell();
+            modle.cancell();
         }
     }
 }
