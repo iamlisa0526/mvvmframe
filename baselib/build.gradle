@@ -16,7 +16,7 @@ uploadArchives {
         // 项目名称
         pom.artifactId = "baselib"
         // 版本号
-        pom.version = "1.0.10"
+        pom.version = "1.0.12"
     }
 }
 //------------------------------aar包上传私服配置end--------------------------
@@ -78,6 +78,9 @@ dependencies {
 
     //用LiveData构建的数据通信总线（优于EventBus）
     api 'com.jeremyliao:live-event-bus:1.6.1'
+
+    //仿IOS选择省市区的三级联动弹框View
+    api 'com.contrarywind:Android-PickerView:4.1.9'
 }
 
 //kotlin

@@ -22,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
         context = this;
 
         //关闭activity
-        LiveEventBus.get("close_activity", Boolean.class)
+        LiveEventBus.get("KEY_CLOSE_ACTIVITY", Boolean.class)
                 .observe(this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(Boolean b) {
