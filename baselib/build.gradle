@@ -16,7 +16,7 @@ uploadArchives {
         // 项目名称
         pom.artifactId = "baselib"
         // 版本号
-        pom.version = "1.0.12"
+        pom.version = "1.0.02"
     }
 }
 //------------------------------aar包上传私服配置end--------------------------
@@ -80,7 +80,13 @@ dependencies {
     api 'com.jeremyliao:live-event-bus:1.6.1'
 
     //仿IOS选择省市区的三级联动弹框View
-    api 'com.contrarywind:Android-PickerView:4.1.9'
+    api 'com.contrarywind:Android-PickerView:3.2.5'
+
+    //常用工具库(2.4.0及以上版本需要迁移到androidx)
+    api 'com.github.tamsiree.RxTool:RxKit:2.3.9'
+
+    //基于zxing优化版的二维码库（提升二维码扫描速度）
+    api 'com.github.yuzhiqiang1993:zxing:2.2.5'
 }
 
 //kotlin
