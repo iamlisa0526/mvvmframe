@@ -7,6 +7,7 @@ import android.view.View
 import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.callback.Callback.OnReloadListener
 import com.kingja.loadsir.core.Convertor
+import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.lisa.mvvmframe.baselib.R
 import com.lisa.mvvmframe.baselib.dto.BasePageDto
@@ -22,7 +23,8 @@ import kotlinx.android.synthetic.main.activity_base_list.*
  */
 abstract class BaseListActivity<T> : BaseActivity() {
     protected val mList = arrayListOf<T>()
-    private lateinit var myAdapter: RecyclerView.Adapter<*>
+    private lateinit var mAdapter: RecyclerView.Adapter<*>
+    private lateinit var mLoadService: LoadService<Any>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,78 +34,17 @@ abstract class BaseListActivity<T> : BaseActivity() {
 
         header.visibility = View.VISIBLE
 
-        myAdapter = getAdapter()
+        mAdapter = getAdapter()
         recycler_view.layoutManager = LinearLayoutManager(context)
-        recycler_view.adapter = myAdapter
+        recycler_view.adapter = mAdapter
+
+        //注册loadsir，显示空布局,错误数据等
+        mLoadService = LoadSir.getDefault().register(refresh_layout)
 
         if (!isRefresh())
             refresh_layout.setEnableRefresh(false)
 
-        registerLoadSir()
-
         request()
-    }
-
-    /**
-     * 注册loadsir，显示空数据,请求错误等布局
-     */
-    private fun registerLoadSir() {
-        //刷新说明是分页数据
-        if (isRefresh()) {
-
-            LoadSir.getDefault().register<MyApiResult<BasePageDto<T>>>(context, object : OnReloadListener {
-                override fun onReload(v: View?) {
-
-                }
-            }, object : Convertor<MyApiResult<BasePageDto<T>>> {
-                override fun map(apiResult: MyApiResult<BasePageDto<T>>): Class<out Callback>? {
-                    val data = apiResult.data as BasePageDto<T>
-
-                    var resultCode: Class<out Callback?>? = null
-
-                    when (apiResult.code) {
-
-                        MyApiResult.SUCCESS_CODE -> if (data.content.isEmpty()) {
-                            resultCode = EmptyCallback::class.java
-                        }
-
-                        MyApiResult.ERROR_CODE -> resultCode = ErrorCallback::class.java
-
-                        else -> resultCode = null
-                    }
-
-                    return resultCode
-                }
-            })
-
-        } else {//不刷新说明不分页
-            LoadSir.getDefault().register<MyApiResult<List<T>>>(context, object : OnReloadListener {
-                override fun onReload(v: View?) {
-
-                }
-            }, object : Convertor<MyApiResult<List<T>>> {
-                override fun map(apiResult: MyApiResult<List<T>>): Class<out Callback>? {
-                    val data = apiResult.data as List<T>
-
-                    var resultCode: Class<out Callback?>? = null
-
-                    when (apiResult.code) {
-
-                        MyApiResult.SUCCESS_CODE -> if (data.isEmpty()) {
-                            resultCode = EmptyCallback::class.java
-                        }
-
-                        MyApiResult.ERROR_CODE -> resultCode = ErrorCallback::class.java
-
-                        else -> resultCode = null
-                    }
-
-                    return resultCode
-                }
-            })
-        }
-
-
     }
 
     /**
@@ -128,7 +69,10 @@ abstract class BaseListActivity<T> : BaseActivity() {
     protected fun updateData(list: ArrayList<T>) {
         mList.clear()
         mList.addAll(list)
-        myAdapter.notifyDataSetChanged()
+        mAdapter.notifyDataSetChanged()
+
+        if (mList.isEmpty())
+            mLoadService.showCallback(EmptyCallback::class.java)
     }
 
 

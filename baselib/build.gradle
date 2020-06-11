@@ -16,7 +16,7 @@ uploadArchives {
         // 项目名称
         pom.artifactId = "baselib"
         // 版本号
-        pom.version = "1.1.5"
+        pom.version = "1.1.9"
     }
 }
 //------------------------------aar包上传私服配置end--------------------------

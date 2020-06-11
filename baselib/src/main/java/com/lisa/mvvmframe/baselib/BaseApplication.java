@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.kingja.loadsir.core.LoadSir;
 import com.lisa.mvvmframe.baselib.loadsir.EmptyCallback;
-import com.lisa.mvvmframe.baselib.loadsir.LoadingCallback;
 
 /**
  * @Description: Application基类
@@ -32,10 +31,7 @@ public class BaseApplication extends Application {
         application = this;
 
         LoadSir.beginBuilder()//添加各种状态页
-                .addCallback(new LoadingCallback())
                 .addCallback(new EmptyCallback())
-                .addCallback(new EmptyCallback())
-                .setDefaultCallback(LoadingCallback.class)//设置默认状态页
                 .commit();
 
 
