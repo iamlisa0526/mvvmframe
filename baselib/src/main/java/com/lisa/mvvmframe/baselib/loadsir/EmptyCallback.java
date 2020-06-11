@@ -1,6 +1,7 @@
 package com.lisa.mvvmframe.baselib.loadsir;
 
 import com.kingja.loadsir.callback.Callback;
+import com.lisa.mvvmframe.baselib.R;
 
 /**
  * @Description: loadsir空数据回调显示的view
@@ -11,7 +12,6 @@ public class EmptyCallback extends Callback {
 
     @Override
     protected int onCreateView() {
-        //todo
-        return 0;
+        return R.layout.layout_empty;
     }
 }
