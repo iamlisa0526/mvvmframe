@@ -2,9 +2,6 @@ package com.lisa.mvvmframe.baselib;
 
 import android.app.Application;
 
-import com.kingja.loadsir.core.LoadSir;
-import com.lisa.mvvmframe.baselib.loadsir.EmptyCallback;
-
 /**
  * @Description: Application基类
  * @Author: lisa
@@ -29,11 +26,5 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
-
-        LoadSir.beginBuilder()//添加各种状态页
-                .addCallback(new EmptyCallback())
-                .commit();
-
-
     }
 }
